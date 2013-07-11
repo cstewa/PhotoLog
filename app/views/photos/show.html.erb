@@ -1,0 +1,6 @@
+<%= @photo.name %>
+
+<p><%= image_tag @photo.picture %></p>
+ 
+<%= link_to 'Edit', edit_album_photo_path(@photo.album.id, @photo) %> |
+<%= link_to "Back to Photos in #{@photo.album.name}", album_path(@photo.album.id) %>
