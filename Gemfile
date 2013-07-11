@@ -17,6 +17,10 @@ group :development do
   gem 'meta_request'
 end
 
+
+gem 'unicorn'
+
+
 group :test, :development do
   gem 'capybara'
   gem 'factory_girl_rails'
@@ -48,7 +52,7 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+
 
 # Deploy with Capistrano
 # gem 'capistrano'
