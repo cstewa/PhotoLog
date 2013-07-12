@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>PictureMe</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
 
-<nav>
-	<% if current_user %>
-		Logged in as <%=link_to current_user.email, user_url(current_user.id) %>
-		<%= link_to "Log Out", logout_url %>
-	<% else %>
-		<%= link_to "Sign up", signup_url %> |
-		<%= link_to "Log In", login_url %>
-	<% end %>
-</nav>
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
-<div>
-	Friends currently logging photos on PhotoLog: <%= current_users_list %>
-</div>
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-</body>
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <nav>
+      <% if current_user %>
+        Logged in as <%=link_to current_user.email, user_url(current_user.id) %>
+        <%= link_to "Log Out", logout_url %>
+      <% else %>
+        <%= link_to "Sign up", signup_url %> |
+        <%= link_to "Log In", login_url %>
+      <% end %>
+    </nav>
+
+    <%= yield %>
+
+    </br>
+    <div>
+      Friends currently logging photos on PhotoLog: <%= current_users_list %>
+    </div>
+
+
+    
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

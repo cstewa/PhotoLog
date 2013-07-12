@@ -6,9 +6,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(params[:user])
   	if @user.save
-      auto_login(@user)
       UserMailer.signup_confirmation(@user).deliver
-  		redirect_to user_url(@user.id)
+  		redirect_to root_url, :notice => 'Thanks for signing up! Check your email to activate your account'
   	else
   		render :new
   	end
