@@ -29,6 +29,7 @@ end
 
 gem "fog"
 gem "carrierwave"
+gem "sorcery"
 
 
 # Gems used only for assets and not required

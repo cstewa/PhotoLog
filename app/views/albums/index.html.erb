@@ -1,9 +1,11 @@
-<h1>Albums</h1>
+<p id="notice"><%= notice %></p>
+
+<h1>All Albums</h1>
 
 <ul>
 <% @albums.each do |album| %>
-	<li><%= link_to album.name, album_path(album.id) %></li>
+	<li><%= link_to album.name, album_url(album.id) %></li>
 <% end %>
 </ul>
 
-<%= link_to "Add an Album", new_album_path %>
+<%= link_to "Add an Album", new_album_url %>

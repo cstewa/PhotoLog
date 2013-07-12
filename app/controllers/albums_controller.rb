@@ -1,4 +1,7 @@
 class AlbumsController < ApplicationController
+ 
+  before_filter :require_login, :only => :new
+
   def index
     @albums = Album.all
   end
@@ -14,7 +17,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(params[:album])
     if @album.save
-      redirect_to albums_path
+      redirect_to albums_url
     else
       render :new
     end  
@@ -28,7 +31,7 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
 
     if @album.update_attributes(params[:album])
-      redirect_to albums_path
+      redirect_to albums_url
     else 
       render :edit
     end
@@ -38,6 +41,6 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @album.destroy
 
-    redirect_to albums_path
+    redirect_to albums_url
   end
 end

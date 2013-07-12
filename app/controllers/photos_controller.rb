@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_filter :require_login, :only => :new
+
   def index
     @photos = Photo.all
   end
@@ -17,7 +19,7 @@ class PhotosController < ApplicationController
     @album_id = params[:album_id]
     @photo.album_id = @album_id
     if @photo.save
-      redirect_to album_path(@photo.album.id)
+      redirect_to album_url(@photo.album.id)
     else
       render :new
     end  
@@ -31,7 +33,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
 
     if @photo.update_attributes(params[:photo])
-      redirect_to redirect_to album_path(@photo.album.id)
+      redirect_to redirect_to album_url(@photo.album.id)
     else 
       render :edit
     end
@@ -41,6 +43,6 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @photo.destroy
 
-    redirect_to photos_path
+    redirect_to photos_url
   end
 end
