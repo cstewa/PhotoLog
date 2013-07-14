@@ -5,7 +5,15 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(params[:user])
+
   	if @user.save
+      if params[:stripeToken] != nil
+          customer = Stripe::Customer.create(
+            :email => @user.email,
+            :card  => params[:stripeToken],
+            :plan => "paid"
+          )
+      end
       UserMailer.signup_confirmation(@user).deliver
   		redirect_to root_url, :notice => 'Thanks for signing up! Check your email to activate your account'
   	else

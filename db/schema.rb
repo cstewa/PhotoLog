@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711190622) do
+ActiveRecord::Schema.define(:version => 20130713020311) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130711190622) do
     t.datetime "last_logout_at"
     t.datetime "last_activity_at"
     t.string   "last_login_from_ip_address"
+    t.string   "stripe_id"
   end
 
   add_index "users", ["activation_token"], :name => "index_users_on_activation_token"

@@ -1,5 +1,10 @@
 <p> Woo! You're an official PhotoLogger. We encourage you to upload lots of pictures. Have fun browsing! </p>
 
+<% if @user.stripe_id %> 
+<p> You are on the Paid Plan. Your card will be charged $5/month, with unlimited albums! </p>
+<% end %>
+
+
 <p> <%= link_to "Login", @url %> to your account.</p>
 
 <p> -The PhotoLogger Team </p>

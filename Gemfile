@@ -17,6 +17,7 @@ group :development do
   gem 'meta_request'
 end
 
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem 'unicorn'
 

@@ -13,6 +13,8 @@ PictureMe::Application.routes.draw do
     end
   end
 
+  resources :charges
+
   resources :albums do 
     resources :photos do
     end
