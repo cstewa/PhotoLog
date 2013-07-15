@@ -31,16 +31,15 @@
         <%= link_to "Log In", login_url %>
       <% end %>
     </nav>
+    </br>
+    Friends currently logging photos on PhotoLog: <%= current_users_list %>
 
     <div class= "main">
       <%= yield %>
     </div>
 
     </br>
-    <div>
-      Friends currently logging photos on PhotoLog: <%= current_users_list %>
-    </div>
-
+    
 
     
     <%= javascript_include_tag "application" %>

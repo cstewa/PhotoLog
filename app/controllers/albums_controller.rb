@@ -16,12 +16,14 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(params[:album])
-    @album.user_id = current_user.id
-    if @album.save
-      redirect_to albums_url
-    else
-      render :new
-    end  
+
+    if current_user.albums.length > 1 && !current_user.is_paid
+      redirect_to signup_url, :notice => "You must have a paid account to create more than two albums. Sign up below!"
+    else 
+      @album.user_id = current_user.id
+      @album.save
+      redirect_to albums_url 
+    end 
   end
 
   def edit

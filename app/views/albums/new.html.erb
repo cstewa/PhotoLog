@@ -1,12 +1,12 @@
+
+
 <h1>Make A New Album</h1>
 
-<div class = "practice">
 <%= form_for @album do |f| %>
 	<%= f.label :name %>
 	<%= f.text_field :name %>
 	<%= f.submit "Create Album" %>
 <% end %>
-</div>
 
 </br>
 <%= link_to "Back to All Albums", albums_url %>

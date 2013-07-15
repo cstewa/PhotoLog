@@ -18,12 +18,17 @@ ul {
 }
 
 .main {
-	width: 400px;
+	width: 900px;
 	margin-left: 20px;
 }
 
-.practice {
-	margin-left: 30px;
-	width: 200px;
-	height: 300px;
+.free_form {
+	width: 350px;
+	float:left;
 }
+
+.paid_form {
+	float:right;
+	width: 350px;
+}
+

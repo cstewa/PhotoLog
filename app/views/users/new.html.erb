@@ -1,5 +1,11 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Sign Up!</h1>
 
+<div class = "free_form">
+<p> Paid users can create unlimited albums. Free users can create two. </p>
+
+<h3> Free User </h3>
 <%= form_for(@user) do |f| %>
 
 	<div class="field">
@@ -16,7 +22,32 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
+  <div class="actions">
+    <%= f.submit "Sign Up!" %>
+  </div>
+<% end %>
+</div>
 
+<div class = "paid_form">
+<h3> Paid User </h3>
+
+<%= form_for(@user) do |f| %>
+
+  <div class="field">
+    <%= f.label "Email (this will be your username):" %> <br/>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  </br>
   <%= form_tag charges_path do %>
   <article>
     <label class="amount">
@@ -35,4 +66,4 @@
   </div>
   
 <% end %>
-
+</div>
