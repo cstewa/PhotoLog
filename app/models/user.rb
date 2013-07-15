@@ -7,4 +7,16 @@ class User < ActiveRecord::Base
 	validates_presence_of :password, :on => :create
 	validates_confirmation_of :password
 
+	def customer_emails
+		customer_emails = []
+		Stripe::Customer.all.data.each do |c|
+			customer_emails << c.email
+		end
+		customer_emails
+	end 
+
+	def is_paid
+		customer_emails.include?(self.email)
+	end
+
 end

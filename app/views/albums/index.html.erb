@@ -5,6 +5,7 @@
 <ul>
 <% @albums.each do |album| %>
 	<li><%= link_to album.name, album_url(album.id) %></li>
+	By: <%= link_to album.user.email, user_url(album.user.id) %>
 <% end %>
 </ul>
 

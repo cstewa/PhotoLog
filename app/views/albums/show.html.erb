@@ -3,7 +3,7 @@
 <ul>
 <% @album.photos.each do |photo| %>
 	<li> <%= link_to photo.name, album_photo_url(@album.id, photo.id) %> 
-	<%= image_tag photo.picture %> </li>
+	<%= link_to image_tag(photo.picture), album_photo_url(@album.id, photo.id) %> </li>
 <% end %>
 
 <%= link_to "Add a new photo", new_album_photo_url(@album.id) %>

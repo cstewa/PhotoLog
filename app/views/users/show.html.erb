@@ -1,11 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<%= current_user.email %> 
-
-<p> Your Albums: </p>
-
-</br>
-<%= link_to "All Albums", albums_url %>
-
+<h4><%= current_user.email %> </h4>
 </br>
 
+<ul> Albums: 
+	<% current_user.albums.each do |album| %>
+		<li> <%= link_to album.name, album_url(album.id) %> </li>
+	<% end %>
+</ul>
+
+
+<p> <%= link_to "Add Album", new_album_url %> |
+<%= link_to "All Albums", albums_url %> |
+<%= link_to "All PhotoLoggrs", users_url %></p>

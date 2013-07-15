@@ -31,9 +31,12 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
+    comment = Comment.new
+    comment.content = params[:pic][:comment] + " - " + current_user.email
+    comment.save
 
-    if @photo.update_attributes(params[:photo])
-      redirect_to redirect_to album_url(@photo.album.id)
+    if @photo.comments << comment
+      redirect_to album_photo_url(@photo.album.id, @photo.id)
     else 
       render :edit
     end

@@ -2,6 +2,7 @@ PictureMe::Application.routes.draw do
 
   resources :password_resets
 
+  put "/albums/:album_id/photos/:id(.:format)" => "photos#update", :as => "comments"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   post "login" => "sessions#create"

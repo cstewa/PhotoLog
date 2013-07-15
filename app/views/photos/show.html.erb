@@ -1,6 +1,18 @@
 <%= @photo.name %>
 
 <p><%= image_tag @photo.picture %></p>
+
+<ul>
+	<% @photo.comments.each do |comment| %>
+		<li><%= comment.content %></li>
+	<% end %>
+</ul>
+</br>
+
+<%= form_for("pic", :method => "put", :url => comments_url(@photo.album.id, @photo.id)) do |f| %>
+	<%= f.label "Your Comment:" %>
+	<%= f.text_field :comment %>
+<% end %>
  
 <%= link_to 'Edit', edit_album_photo_url(@photo.album.id, @photo) %> |
 <%= link_to "Back to Photos in #{@photo.album.name}", album_url(@photo.album.id) %>
