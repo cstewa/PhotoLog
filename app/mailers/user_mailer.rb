@@ -3,13 +3,13 @@ class UserMailer < ActionMailer::Base
 
   def signup_confirmation(user) 
   	@user = user
-  	@url = "http://0.0.0.0:5000/users/#{user.activation_token}/activate"
+  	@url = activate_user_url(user.activation_token)
   	mail(:to => user.email, :subject => "Thanks for Signing Up!")
   end
 
   def activation_success(user)
   	@user = user
-  	@url = "http://0.0.0.0:5000/login"
+  	@url = login_url
   	mail(:to => user.email, :subject => "Sweet! You have an activated account now.")
   end
 

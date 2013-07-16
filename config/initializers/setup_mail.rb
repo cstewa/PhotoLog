@@ -7,5 +7,9 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
-ActionMailer::Base.default_url_options[:host] = "localhost:5000"
+if Rails.env.production?
+	ActionMailer::Base.default_url_options[:host] = "photo-log.herokuapp.com"
+else
+	ActionMailer::Base.default_url_options[:host] = "localhost:5000"
+end
 Mail.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?
