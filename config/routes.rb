@@ -1,5 +1,7 @@
 PictureMe::Application.routes.draw do
 
+  root :to => 'albums#index'
+
   resources :password_resets
 
   put "/albums/:album_id/photos/:id(.:format)" => "photos#update", :as => "comments"
@@ -21,7 +23,7 @@ PictureMe::Application.routes.draw do
     end
   end
 
-  root :to => 'albums#index'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
