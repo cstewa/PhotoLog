@@ -18,7 +18,7 @@ class UsersController < ApplicationController
             :plan => "paid"
           )
       end
-      UserMailer.signup_confirmation(@user).deliver
+      UserMailer.delay.signup_confirmation(@user)
   		redirect_to root_url, :notice => 'Thanks for signing up! Check your email to activate your account'
   	else
   		render :new
