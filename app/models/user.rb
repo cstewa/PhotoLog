@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 			customer_emails << c.email
 		end
 		customer_emails
-	end 
+	end
 
 	def is_paid
 		customer_emails.include?(self.email)

@@ -1,8 +1,8 @@
 class UserMailer < ActionMailer::Base
 	default :from => "christina.v.stewart@gmail.com"
 
-  def signup_confirmation(user) 
-  	@user = user
+  def signup_confirmation(user)
+    @user = user
   	@url = activate_user_url(user.activation_token)
   	mail(:to => user.email, :subject => "Thanks for Signing Up!")
   end
@@ -17,6 +17,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @url  = edit_password_reset_url(user.reset_password_token)
     mail(:to => user.email, :subject => "Your password has been reset")
-  end 
+  end
+
 
 end
